@@ -64,9 +64,13 @@
             <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
         </div>
     </div>
+
+    <?php
+    if(isset($_SESSION["loggedin"]) && isset($_SESSION["loggedin"])==true){
+    echo '
     <div class="container">
         <h3 class="py-2">Ask a question</h3>
-        <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post">
+        <form action="'. $_SERVER["REQUEST_URI"].'" method="post">
             <div class="mb-3">
                 <label for="title" class="form-label">Problem Title</label>
                 <input type="text" class="form-control" id="title" name="title" aria-describedby="title">
@@ -78,7 +82,15 @@
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
-    </div>
+    </div>';
+    }else{
+            echo ' <div class="container">
+                        <h3>Start a discussion</h3>
+                        <p ><b>You are not logged in. Please login to able to start a discussion.</b></p>
+                </div>';
+        }
+    ?>
+
 
     <div class="container  mb-3">
         <h3 class="py-2">Browse Question</h3>
